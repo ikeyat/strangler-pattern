@@ -25,6 +25,7 @@
   <mvc:default-servlet-handler />
 
   <context:component-scan base-package="org.terasoluna.tourreservation.app" />
+  <context:component-scan base-package="org.terasoluna.tourreservation.api" />  
 
   <mvc:resources mapping="/resources/**" location="/resources/,classpath:META-INF/resources/"
     cache-period="#{60 * 60}" />

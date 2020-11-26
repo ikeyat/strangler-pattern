@@ -57,6 +57,10 @@
         <property name="codeListIdPattern" value="CL_.+" />
       </bean>
     </mvc:interceptor>
+    <mvc:interceptor>
+      <mvc:mapping path="/api/facade/**"/>
+      <bean class="brave.spring.webmvc.SpanCustomizingAsyncHandlerInterceptor" />
+    </mvc:interceptor>
   </mvc:interceptors>
 
   <!-- Settings View Resolver. -->

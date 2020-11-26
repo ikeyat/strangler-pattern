@@ -1,0 +1,15 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: strangler-apigw
+  cloud:
+    gateway:
+      routes:
+      - id: legacy_apis
+        uri: http://localhost:8080
+        predicates:
+        - Path=/legacy/**
+        filters:
+        - RewritePath=/legacy/(?<segment>.*), /terasoluna-tourreservation-web/api/facade/$\{segment}

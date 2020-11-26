@@ -4,7 +4,7 @@
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern><![CDATA[date:%d{yyyy-MM-dd HH:mm:ss}\tthread:%thread\tuser:%X{USER}\tX-Track:%X{X-Track}\tlevel:%-5level\tlogger:%-48logger{48}\tmessage:%msg%n]]></pattern>
+      <pattern><![CDATA[date:%d{yyyy-MM-dd HH:mm:ss}\tthread:%thread\tuser:%X{USER}\tX-Track:%X{X-Track}\tlevel:%-5level\t[%X{traceId},%X{spanId}]\tlogger:%-48logger{48}\tmessage:%msg%n]]></pattern>
     </encoder>
   </appender>
 
@@ -16,7 +16,7 @@
     </rollingPolicy>
     <encoder>
       <charset>UTF-8</charset>
-      <pattern><![CDATA[date:%d{yyyy-MM-dd HH:mm:ss}\tthread:%thread\tuser:%X{USER}\tX-Track:%X{X-Track}\tlevel:%-5level\tlogger:%-48logger{48}\tmessage:%msg%n]]></pattern>
+      <pattern><![CDATA[date:%d{yyyy-MM-dd HH:mm:ss}\tthread:%thread\tuser:%X{USER}\tX-Track:%X{X-Track}\tlevel:%-5level\t[%X{traceId},%X{spanId}]\tlogger:%-48logger{48}\tmessage:%msg%n]]></pattern>
     </encoder>
   </appender>
 

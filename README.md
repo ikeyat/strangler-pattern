@@ -1,3 +1,12 @@
+## Strangler Pattern Experiments
+
+### Precoditions
+- Please start Zipkin Server  
+  ```sh
+  $ curl -sSL https://zipkin.io/quickstart.sh | bash -s
+  $ java -jar zipkin.jar
+  ```
+
 ## Tour Reservation Sample Application
 This is a reference application built completely using TERASOLUNA Server Framework for Java (5.x) ([http://terasoluna.org](http://terasoluna.org "http://terasoluna.org")).
 

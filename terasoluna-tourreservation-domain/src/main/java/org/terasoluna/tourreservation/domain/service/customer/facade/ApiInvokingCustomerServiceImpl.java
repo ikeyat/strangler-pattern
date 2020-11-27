@@ -40,4 +40,12 @@ public class ApiInvokingCustomerServiceImpl implements CustomerService {
 		return restTemplate.postForObject(targetUri, input, Customer.class);
 	}
 
+	@Override
+	public Customer findByUsername(String username) {
+		URI targetUri = UriComponentsBuilder.fromUriString(baseUrl).path("/customerservice").path("/findByUsername")
+				.queryParam("username", username).build().toUri();
+
+		// TODO error handling
+		return restTemplate.getForObject(targetUri, Customer.class);
+	}
 }

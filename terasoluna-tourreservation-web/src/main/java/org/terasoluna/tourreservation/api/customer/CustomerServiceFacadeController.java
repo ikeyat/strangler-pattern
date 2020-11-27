@@ -3,6 +3,7 @@ package org.terasoluna.tourreservation.api.customer;
 import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,5 +31,15 @@ public class CustomerServiceFacadeController {
 	public Customer register(@RequestBody RegisterInputResource input) {
 		// TODO error handling
 		return customerService.register(input.getCustomer(), input.getRawPassword());
+	}
+
+	@GetMapping("/findByUsername")
+	public Customer findByUserName(@RequestParam("userName") String userName) {
+		// TODO error handling
+		try {
+			return customerService.findByUsername(userName);
+		} catch (UsernameNotFoundException e) {
+			return null;
+		}
 	}
 }

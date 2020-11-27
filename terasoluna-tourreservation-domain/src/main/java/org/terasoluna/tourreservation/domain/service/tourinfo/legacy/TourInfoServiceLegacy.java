@@ -13,14 +13,15 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.service.customer;
+package org.terasoluna.tourreservation.domain.service.tourinfo.legacy;
 
-import org.terasoluna.tourreservation.domain.model.Customer;
+import java.util.List;
 
-public interface CustomerService {
-    Customer findOne(String customerCode);
+import org.terasoluna.tourreservation.domain.common.facade.PageRangedInputResource;
+import org.terasoluna.tourreservation.domain.common.facade.PageRangedOutputResource;
+import org.terasoluna.tourreservation.domain.model.TourInfo;
+import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
 
-    Customer register(Customer customer, String rawPassword);
-
-    Customer findByUsername(String username);
+public interface TourInfoServiceLegacy {
+	PageRangedOutputResource<List<TourInfo>> searchTour(PageRangedInputResource<TourInfoSearchCriteria> input);
 }

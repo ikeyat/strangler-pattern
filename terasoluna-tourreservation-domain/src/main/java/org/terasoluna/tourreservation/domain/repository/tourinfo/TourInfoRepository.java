@@ -18,7 +18,7 @@ package org.terasoluna.tourreservation.domain.repository.tourinfo;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.domain.Pageable;
+import org.terasoluna.tourreservation.domain.common.facade.PageRangedInputResource;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 
 public interface TourInfoRepository {
@@ -29,7 +29,7 @@ public interface TourInfoRepository {
 
     List<TourInfo> findPageBySearchCriteria(
             @Param("criteria") TourInfoSearchCriteria criteria,
-            @Param("pageable") Pageable pageable);
+            @Param("pageable") PageRangedInputResource<?> pageable);
 
     long countBySearchCriteria(
             @Param("criteria") TourInfoSearchCriteria criteria);

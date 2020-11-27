@@ -13,11 +13,12 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.service.tourinfo;
+package org.terasoluna.tourreservation.domain.service.tourinfo.legacy;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +26,16 @@ import java.util.List;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
+import org.terasoluna.tourreservation.domain.common.facade.PageRangedInputResource;
+import org.terasoluna.tourreservation.domain.common.facade.PageRangedOutputResource;
 import org.terasoluna.tourreservation.domain.model.Arrival;
 import org.terasoluna.tourreservation.domain.model.Departure;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
-import org.terasoluna.tourreservation.domain.service.tourinfo.TourInfoServiceImpl;
 
 public class TourInfoServiceImplTest {
     TourInfoServiceImpl tourInfoService;
@@ -79,15 +79,15 @@ public class TourInfoServiceImplTest {
         info.setTourCode("12345678");
         mockedList.add(info);
 
-        Page<TourInfo> page = new PageImpl<TourInfo>(mockedList, pageable, 1L);
+        PageRangedOutputResource<List<TourInfo>> page = new PageRangedOutputResource<>(mockedList, 1L);
 
-        when(tourInfoRepository.findPageBySearchCriteria(criteria, pageable))
+        when(tourInfoRepository.findPageBySearchCriteria(criteria, new PageRangedInputResource<>(criteria, pageable)))
                 .thenReturn(mockedList);
 
         when(tourInfoRepository.countBySearchCriteria(criteria)).thenReturn(1L);
 
         // run
-        Page<TourInfo> result = tourInfoService.searchTour(criteria, pageable);
+        PageRangedOutputResource<List<TourInfo>> result = tourInfoService.searchTour(new PageRangedInputResource<>(criteria, pageable));
 
         // assert
         assertThat(result, is(page));

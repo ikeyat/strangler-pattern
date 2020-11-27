@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.service.customer;
+package org.terasoluna.tourreservation.domain.service.customer.legacy;
 
 import javax.inject.Inject;
 
@@ -25,7 +25,7 @@ import org.terasoluna.tourreservation.domain.repository.customer.CustomerReposit
 
 @Transactional
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl implements CustomerServiceLegacy {
     @Inject
     CustomerRepository customerRepository;
 
@@ -47,4 +47,8 @@ public class CustomerServiceImpl implements CustomerService {
         return customer;
     }
 
+    @Override
+    public Customer findByUsername(String username)  {
+        return customerRepository.findById(username).orElse(null);
+    }
 }

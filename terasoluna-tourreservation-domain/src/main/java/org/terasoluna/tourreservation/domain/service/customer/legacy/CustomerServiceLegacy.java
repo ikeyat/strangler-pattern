@@ -13,11 +13,11 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.service.customer;
+package org.terasoluna.tourreservation.domain.service.customer.legacy;
 
 import org.terasoluna.tourreservation.domain.model.Customer;
 
-public interface CustomerService {
+public interface CustomerServiceLegacy {
     Customer findOne(String customerCode);
 
     Customer register(Customer customer, String rawPassword);

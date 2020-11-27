@@ -28,7 +28,7 @@
   </sec:authentication-manager>
 
   <bean id="userDetailsService"
-    class="org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetailsService" />
+    class="org.terasoluna.tourreservation.domain.service.userdetails.facade.ApiInvokingReservationUserDetailsService" />
 
   <bean id="redirectHandler"
     class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">

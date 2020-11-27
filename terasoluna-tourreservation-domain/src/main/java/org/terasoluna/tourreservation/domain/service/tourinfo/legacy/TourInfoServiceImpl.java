@@ -13,43 +13,40 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.service.tourinfo;
+package org.terasoluna.tourreservation.domain.service.tourinfo.legacy;
 
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.terasoluna.tourreservation.domain.common.facade.PageRangedInputResource;
+import org.terasoluna.tourreservation.domain.common.facade.PageRangedOutputResource;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoSearchCriteria;
 
 @Service
 @Transactional
-public class TourInfoServiceImpl implements TourInfoService {
+public class TourInfoServiceImpl implements TourInfoServiceLegacy {
 
-    @Inject
-    TourInfoRepository tourInfoRepository;
+	@Inject
+	TourInfoRepository tourInfoRepository;
 
-    @Override
-    public Page<TourInfo> searchTour(TourInfoSearchCriteria criteria,
-            Pageable pageable) {
+	@Override
+	public PageRangedOutputResource<List<TourInfo>> searchTour(PageRangedInputResource<TourInfoSearchCriteria> input) {
+		TourInfoSearchCriteria criteria = input.getResource();
 
-        long total = tourInfoRepository.countBySearchCriteria(criteria);
-        List<TourInfo> content;
-        if (0 < total) {
-            content = tourInfoRepository.findPageBySearchCriteria(criteria,
-                    pageable);
-        } else {
-            content = Collections.emptyList();
-        }
+		long total = tourInfoRepository.countBySearchCriteria(criteria);
+		List<TourInfo> content;
+		if (0 < total) {
+			content = tourInfoRepository.findPageBySearchCriteria(criteria, input);
+		} else {
+			content = Collections.emptyList();
+		}
 
-        Page<TourInfo> page = new PageImpl<TourInfo>(content, pageable, total);
-        return page;
-    }
+		return new PageRangedOutputResource<List<TourInfo>>(content, total);
+	}
 }

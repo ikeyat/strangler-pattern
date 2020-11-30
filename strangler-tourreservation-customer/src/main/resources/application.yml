@@ -1,0 +1,15 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: strangler-tourreservation-customer
+  datasource:
+    name: POSTGRESQL
+    url: jdbc:postgresql://localhost/tourreserve
+    username: postgres
+    password: P0stgres
+
+mybatis:
+  config-location: classpath:/mybatis/mybatis-config.xml
+  

@@ -7,7 +7,15 @@ spring:
   cloud:
     gateway:
       routes:
+      - id: modern_apis
+        order: 0
+        uri: http://localhost:8100
+        predicates:
+        - Path=/legacy/customerservice/**
+        filters:
+        - RewritePath=/legacy/(?<segment>.*), /api/modern/$\{segment}
       - id: legacy_apis
+        order: 10000
         uri: http://localhost:8080
         predicates:
         - Path=/legacy/**

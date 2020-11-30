@@ -13,11 +13,9 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.service.tourinfo;
+package org.terasoluna.tourreservation.domain.service.tourinfo.legacy;
 
 import javax.inject.Inject;
-
-import lombok.extern.slf4j.Slf4j;
 
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
@@ -27,10 +25,12 @@ import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.TourInfo;
 import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
 @Service
 @Transactional
-public class TourInfoSharedServiceImpl implements TourInfoSharedService {
+public class TourInfoSharedServiceImpl implements TourInfoSharedServiceLegacy {
 
     @Inject
     TourInfoRepository tourInfoRepository;

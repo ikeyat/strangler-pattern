@@ -53,7 +53,7 @@
   </filter>
   <filter-mapping>
     <filter-name>tracingFilter</filter-name>
-    <url-pattern>/api/facade/*</url-pattern>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
 
   <filter>

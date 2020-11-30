@@ -13,7 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.service.tourinfo;
+package org.terasoluna.tourreservation.domain.service.tourinfo.legacy;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -25,10 +25,11 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.terasoluna.tourreservation.domain.model.Age;
 import org.terasoluna.tourreservation.domain.repository.age.AgeRepository;
+import org.terasoluna.tourreservation.domain.service.tourinfo.PriceCalculateOutput;
 
 @Service
 public class PriceCalculateSharedServiceImpl implements
-                                             PriceCalculateSharedService {
+                                             PriceCalculateSharedServiceLegacy {
 
     @Inject
     AgeRepository ageRepository;

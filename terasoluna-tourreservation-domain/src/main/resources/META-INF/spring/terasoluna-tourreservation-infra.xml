@@ -18,6 +18,12 @@
   <!-- scan for Mappers -->
   <mybatis:scan base-package="org.terasoluna.tourreservation.domain.repository" />
 
-  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+    <property name="interceptors">
+      <list>
+        <bean class="brave.spring.web.TracingClientHttpRequestInterceptor" />
+      </list>
+    </property>
+  </bean>
 </beans>
 

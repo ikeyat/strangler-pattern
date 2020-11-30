@@ -2,7 +2,6 @@ package org.terasoluna.tourreservation.api.customer;
 
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,15 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.terasoluna.tourreservation.domain.model.Customer;
-import org.terasoluna.tourreservation.domain.service.customer.CustomerService;
 import org.terasoluna.tourreservation.domain.service.customer.facade.RegisterInputResource;
+import org.terasoluna.tourreservation.domain.service.customer.legacy.CustomerServiceLegacy;
 
 @RestController
 @RequestMapping("/api/facade/customerservice")
 public class CustomerServiceFacadeController {
 	@Inject
-	@Qualifier("customerServiceImpl")
-	private CustomerService customerService;
+	private CustomerServiceLegacy customerService;
 
 	@GetMapping("/findone")
 	public Customer findOne(@RequestParam("customerCode") String customerCode) {

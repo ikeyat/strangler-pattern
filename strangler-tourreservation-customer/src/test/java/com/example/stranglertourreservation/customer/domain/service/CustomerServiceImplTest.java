@@ -13,11 +13,11 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.terasoluna.tourreservation.domain.service.customer.legacy;
+package com.example.stranglertourreservation.customer.domain.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -27,23 +27,24 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
-import org.terasoluna.tourreservation.domain.model.Customer;
-import org.terasoluna.tourreservation.domain.repository.customer.CustomerRepository;
+
+import com.example.stranglertourreservation.customer.domain.model.Customer;
+import com.example.stranglertourreservation.customer.domain.repository.CustomerRepository;
 
 public class CustomerServiceImplTest {
     CustomerServiceImpl customerService;
 
     CustomerRepository customerRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         customerService = new CustomerServiceImpl();
         customerRepository = mock(CustomerRepository.class);
@@ -55,7 +56,7 @@ public class CustomerServiceImplTest {
         customerService.passwordEncoder = new DelegatingPasswordEncoder(encodingId, encoders);
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
     }
 

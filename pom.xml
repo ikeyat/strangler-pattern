@@ -13,6 +13,7 @@
     <module>terasoluna-tourreservation-web</module>
     <module>strangler-apigw</module>
     <module>strangler-tourreservation-customer</module>
+    <module>strangler-tourreservation-tourinfo</module>
   </modules>
   <parent>
     <groupId>org.terasoluna.gfw</groupId>

@@ -7,11 +7,18 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: modern_apis
+      - id: modern_customer_apis
         order: 0
         uri: http://localhost:8100
         predicates:
         - Path=/legacy/customerservice/**
+        filters:
+        - RewritePath=/legacy/(?<segment>.*), /api/modern/$\{segment}
+      - id: modern_tourinfo_apis
+        order: 0
+        uri: http://localhost:8110
+        predicates:
+        - Path=/legacy/tourinfoservice/**
         filters:
         - RewritePath=/legacy/(?<segment>.*), /api/modern/$\{segment}
       - id: legacy_apis

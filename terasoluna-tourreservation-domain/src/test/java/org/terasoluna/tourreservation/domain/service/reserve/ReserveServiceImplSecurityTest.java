@@ -29,7 +29,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.terasoluna.gfw.common.date.jodatime.JodaTimeDateFactory;
 import org.terasoluna.tourreservation.domain.model.*;
 import org.terasoluna.tourreservation.domain.repository.reserve.ReserveRepository;
-import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
+//import org.terasoluna.tourreservation.domain.repository.tourinfo.TourInfoRepository;
 import org.terasoluna.tourreservation.domain.service.userdetails.ReservationUserDetails;
 
 import javax.inject.Inject;
@@ -56,8 +56,8 @@ public class ReserveServiceImplSecurityTest {
     @Inject
     ReserveRepository mockReserveRepository;
 
-    @Inject
-    TourInfoRepository tourInfoRepository;
+// TODO    @Inject
+// TODO    TourInfoRepository tourInfoRepository;
 
     @Inject
     ReserveService reserveService;
@@ -67,7 +67,7 @@ public class ReserveServiceImplSecurityTest {
 
     @Before
     public void resetMocks() {
-        reset(mockReserveRepository, tourInfoRepository);
+// TODO        reset(mockReserveRepository, tourInfoRepository);
     }
 
     @Test
@@ -263,8 +263,8 @@ public class ReserveServiceImplSecurityTest {
         tourInfo.setArrival(new Arrival());
         reserve.setTourInfo(tourInfo);
 
-        when(tourInfoRepository.findOneWithDetails(tourInfo.getTourCode()))
-                .thenReturn(tourInfo);
+// TODO        when(tourInfoRepository.findOneWithDetails(tourInfo.getTourCode()))
+// TODO                .thenReturn(tourInfo);
     }
 
     @WithSecurityContext(factory = WithMockCustomerSecurityContextFactory.class)

@@ -1,5 +1,8 @@
 ## Strangler Pattern Experiments
 
+## Migration Process
+See [strangler.pptx](strangler.pptx).
+
 ### Precoditions
 - Please start Zipkin Server  
   ```sh
